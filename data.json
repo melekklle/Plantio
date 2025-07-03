@@ -1,0 +1,274 @@
+{
+  "weather": {
+    "day": "Sunday",
+    "degree":"26°",
+    "degreemini":"20° / 30°"
+  },
+  "shortcuts":[
+    {
+      "id":1,
+      "label":"My Garden",
+      "icon":"water-outline",
+      "isImage": false
+    },
+    {
+      "id":2,
+      "label":"My Plants",
+      "icon":"flower.png",
+      "isImage":true
+    }
+
+  ],
+  "banners": [
+    {
+      "id": 1,
+      "image": "Garden.jpg",
+      "title": "Create plans\nwith Gardening App",
+      "subtitle": "New in"
+    },
+    {
+      "id": 2,
+      "image": "bahce2.jpg",
+      "title": "Track watering\nfor your plants",
+      "subtitle": "Daily Tip"
+    },
+    {
+      "id": 3,
+      "image": "laleler.jpg",
+      "title": "Monitor sunlight\nand weather",
+      "subtitle": "Smart Care"
+    },
+    {
+      "id": 4,
+      "image": "bahce.jpg",
+      "title": "Track watering\nfor your plants",
+      "subtitle": "Smart Care"
+    }, 
+    {
+      "id": 5,
+      "image": "Garden.jpg",
+      "title": "Create plans\nwith Gardening App",
+      "subtitle": "Smart Care"
+    },
+    {
+      "id": 6,
+      "image": "laleler.jpg",
+      "title": "Monitor sunlight\nand weather",
+      "subtitle": "Smart Care"
+    }
+
+  ],
+  "cards": [
+    {
+      "id": 1,
+      "image": "kaktus.jpg",
+      "title": "Cactus",
+      "isNew": true
+    },
+    {
+      "id": 2,
+      "image": "kaktus2.jpg",
+      "title": "Cactus Red",
+      "isNew": false
+    },
+    {
+      "id": 3,
+      "image": "yaprak.jpg",
+      "title": "Rubber Plant",
+      "isNew": false
+    },
+    {
+      "id": 4,
+      "image": "yaprak2.jpg",
+      "title": "Green Leaf",
+      "isNew": true
+  },
+  {
+    "id": 5,
+      "image": "flowers.jpg",
+      "title": "Çiçek",
+      "isNew": false
+  },
+  {
+    "id": 6,
+      "image": "papatya.jpg",
+      "title": "Papatya", 
+      "isNew": true
+  },
+  {
+    "id": 7,
+      "image": "cicek.jpg",
+      "title": "Çiçek",
+      "isNew": false
+  },
+  {
+    "id": 8,
+      "image": "cicek4.jpg",
+      "title": "Çiçek",
+      "isNew": false
+  }
+ ],
+ "plants":[
+  {
+    "id":1,
+    "name":"Cactus",
+    "image":"kaktus.jpg",
+    "status":"Water Level",
+    "progress": 0.7
+    },
+     {
+    "id":2,
+    "name":"Cactus Red",
+    "image":"kaktus2.jpg",
+    "status":"Water Level",
+    "progress": 0.4
+    },
+    {
+    "id":3,
+    "name":"Çiçek",
+    "image":"cicek4.jpg",
+    "status":"Water Level",
+    "progress": 0.7
+    },
+    {
+    "id":4,
+    "name":"Çiçek",
+    "image":"cicek.jpg",
+    "status":"Water Level",
+    "progress": 0.8
+    },
+    {
+    "id":5,
+    "name":"Papatya",
+    "image":"papatya.jpg",
+    "status":"Water Level",
+    "progress": 0.3
+    }
+ ],
+  "myplants":[
+  {
+    "id":1,
+    "name":"Cactus",
+    "image":"kaktus.jpg",
+    "status":"Water Level",
+    "progress": 0.5
+    },
+     {
+    "id":2,
+    "name":"Cactus Red",
+    "image":"kaktus2.jpg",
+    "status":"Water Level",
+    "progress": 0.4
+    },
+    {
+    "id":3,
+    "name":"Çiçek",
+    "image":"cicek4.jpg",
+    "status":"Water Level",
+    "progress": 0.7
+    },
+    {
+    "id":4,
+    "name":"Çiçek",
+    "image":"cicek.jpg",
+    "status":"Water Level",
+    "progress": 0.8
+    },
+    {
+    "id":5,
+    "name":"Papatya",
+    "image":"papatya.jpg",
+    "status":"Water Level",
+    "progress": 0.3
+    }
+ ],
+  "plantscard": [
+    {
+      "id": "1",
+      "name": "Cactus",
+      "status": "Healthy",
+      "image": "kaktus.jpg",
+      "progress": 0.9
+    },
+    {
+      "id": "2",
+      "name": "Cactus Red",
+      "status": "Needs Water",
+      "image": "kaktus2.jpg",
+      "progress": 0.2
+    },
+    {
+      "id": "3",
+      "name": "Flowers",
+      "status": "Almost Dry",
+      "image": "cicek4.jpg",
+      "progress": 0.5
+    },
+    {
+      "id": "4",
+      "name": "Papatya",
+      "status": "Perfect",
+      "image": "papatya.jpg",
+      "progress": 0.7
+    }
+  ],
+  "bilgi": [
+    {
+      "id": 1,
+      "title": "Kaktüs",
+      "image": "kaktus.jpg",
+      "isNew": true,
+      "description": "Kaktüsler az su ile yaşamaya adapte olmuş bitkilerdir."
+    },
+    {
+      "id": 2,
+      "title": "Papatya",
+      "image": "papatya.jpg",
+      "isNew": false,
+      "description": "Kaktüsler, susuz ve zor koşullarda bile hayatta kalabilen, su depolama yeteneği gelişmiş dayanıklı bitkilerdir."
+    },
+    {
+      "id": 3,
+      "title": "Yaprak",
+      "image": "yaprak.jpg",
+      "isNew": false,
+      "description": "Bu yapraklar doğada fotosentez için kullanılır."
+    },{
+      "id": 4,
+      "title": "Yaprak",
+      "image": "yaprak.jpg",
+      "isNew": false,
+      "description": "Bu yapraklar doğada fotosentez için kullanılır."
+    },
+    {
+      "id": 5,
+      "title": "Yaprak",
+      "image": "yaprak.jpg",
+      "isNew": false,
+      "description": "Çiçekler, doğaya renk ve canlılık katan güzelliklerdir."
+    },
+    {
+      "id": 6,
+      "title": "Yaprak",
+      "image": "yaprak.jpg",
+      "isNew": false,
+      "description": "Papatyalar genellikle bahar aylarında açan hoş kokulu çiçeklerdir."
+    },
+    {
+      "id": 7,
+      "title": "Yaprak",
+      "image": "yaprak.jpg",
+      "isNew": false,
+      "description": "Çiçeklerin kokusu, pek çok kişinin ruh halini olumlu etkiler."
+    },
+    {
+      "id": 8,
+      "title": "Yaprak",
+      "image": "yaprak.jpg",
+      "isNew": false,
+      "description": "Bazı çiçekler, polen yayarak doğadaki canlıların üremesine yardımcı olur."
+    }
+  ]
+}
+
+
