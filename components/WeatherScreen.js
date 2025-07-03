@@ -17,6 +17,7 @@ const weatherData = [
 
 export default function WeatherScreen() {
   const navigation = useNavigation();
+  const asd = null;
 
   const [currentTime,setCurrentTime] = useState(getFormattedTime());
    function getFormattedTime(){
