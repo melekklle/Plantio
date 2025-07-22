@@ -10,12 +10,11 @@ const ProfileScreen = () => {
   const navigation = useNavigation();
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
-  const [tc, setTc] = useState('');
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);
 
   const handleSave = async () => {
-    if (!name || !phone || !tc || !email) {
+    if (!name || !phone || !email) {
       Alert.alert('Hata', 'Lütfen tüm alanları doldurun.');
       return;
     }
@@ -26,7 +25,7 @@ const ProfileScreen = () => {
       const response = await fetch('http://192.168.151.9:5000/api/profile', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, telephone: phone, tc, email }),
+        body: JSON.stringify({ name, telephone: phone, email }),
       });
 
       if (!response.ok) {
@@ -41,7 +40,7 @@ const ProfileScreen = () => {
       console.log('API Cevap:', result);
 
       if (result.success) {
-        await AsyncStorage.setItem('userProfile', JSON.stringify({ name, phone, tc, email }));
+        await AsyncStorage.setItem('userProfile', JSON.stringify({ name, phone, email }));
         Alert.alert('Başarılı', 'Bilgiler başarıyla kaydedildi!');
       } else {
         Alert.alert('Hata', result.message || 'Kayıt başarısız.');
@@ -59,10 +58,9 @@ const ProfileScreen = () => {
       try {
         const saved = await AsyncStorage.getItem('userProfile');
         if (saved) {
-          const { name, phone, tc, email } = JSON.parse(saved);
+          const { name, phone, email } = JSON.parse(saved);
           setName(name);
           setPhone(phone);
-          setTc(tc);
           setEmail(email);
         }
       } catch (error) {
@@ -117,18 +115,6 @@ const ProfileScreen = () => {
               onChangeText={setEmail}
               editable={!loading}
             />
-
-            <Text style={styles.label}>TC Kimlik No</Text>
-            <TextInput
-              style={styles.input}
-              placeholder="11 haneli TC No"
-              keyboardType="numeric"
-              maxLength={11}
-              value={tc}
-              onChangeText={setTc}
-              editable={!loading}
-            />
-
             <TouchableOpacity
               style={[styles.button, loading && { backgroundColor: '#8BC79E' }]}
               onPress={handleSave}
@@ -165,12 +151,48 @@ const styles = StyleSheet.create({
     padding: 0,
     alignSelf: 'center',
   },
-  profileImage: { width: 130, height: 130, borderRadius: 65 },
-  label: { fontSize: 22, marginBottom: 6, marginTop: 20, fontWeight: '600', color: '#333', alignSelf: 'center' },
-  input: { borderWidth: 2, borderColor: '#ccc', padding: 15, borderRadius: 10 },
-  button: { marginTop: 30, backgroundColor: '#50924E', paddingVertical: 15, borderRadius: 20, alignItems: 'center' },
-  buttonContent: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center' },
-  starLeft: { color: 'white', marginRight: 10 },
-  starRight: { color: 'white', marginLeft: 10 },
-  buttonText: { color: '#fff', fontSize: 20, fontWeight: 'bold' },
+  profileImage: {
+     width: 130,
+      height: 130,
+       borderRadius: 65
+      },
+  label: { 
+    fontSize: 22,
+    marginBottom: 6,
+     marginTop: 20, 
+     fontWeight: '600',
+      color: '#333',
+       alignSelf: 'center'
+       },
+  input: { 
+    borderWidth: 2,
+     borderColor: '#ccc',
+      padding: 15,
+       borderRadius: 10 
+      },
+  button: {
+     marginTop: 30, 
+     backgroundColor: '#50924E',
+      paddingVertical: 15,
+       borderRadius: 20,
+        alignItems: 'center'
+       },
+  buttonContent: {
+     flexDirection: 'row', 
+     alignItems: 'center', 
+     justifyContent: 'center' 
+    },
+  starLeft: { 
+    color: 'white',
+    marginRight: 10 
+  },
+  starRight: {
+     color: 'white',
+      marginLeft: 10 
+    },
+  buttonText: { 
+    color: '#fff',
+     fontSize: 20,
+      fontWeight: 'bold'
+     },
 });
