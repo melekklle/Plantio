@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import {View,Text,StyleSheet,ScrollView,Image,TouchableOpacity,Dimensions,FlatList,SafeAreaView,Alert,ActivityIndicator,} from "react-native";
+import {
+View,Text,StyleSheet,ScrollView,Image,TouchableOpacity,Dimensions,FlatList,SafeAreaView,Alert,ActivityIndicator,} from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import { LinearGradient } from "expo-linear-gradient";
 import { useNavigation } from "@react-navigation/native";
 
 const { width, height } = Dimensions.get("window");
@@ -24,7 +24,6 @@ export default function HomeScreen() {
         const data = await response.json();
         setDataObj(data);
       } catch (error) {
-        console.error("Veri alınamadı:", error);
         Alert.alert("Hata", "Veriler yüklenemedi.");
       } finally {
         setLoading(false);
@@ -46,16 +45,17 @@ export default function HomeScreen() {
 
   const banners = dataObj.banners || [];
   const cards = dataObj.cards || [];
-  const plantscard = dataObj.plantscard || [];
   const shortcuts = dataObj.shortcuts || [];
-
   const profileImage =
     dataObj.profile && dataObj.profile.length > 0 ? dataObj.profile[0].image : null;
 
-
   return (
     <SafeAreaView style={styles.safeArea}>
-      <ScrollView style={styles.container} contentContainerStyle={{ paddingBottom: 100 }}>
+      <ScrollView
+        style={styles.container}
+        contentContainerStyle={{ paddingBottom: 90}}
+      >
+           {/**/}
         <View style={styles.topRow}>
           <Text style={styles.header}>
             New on <Text style={styles.highlight}>Plantio</Text>
@@ -88,25 +88,9 @@ export default function HomeScreen() {
               <Text style={styles.iconText}>{item.label}</Text>
             </View>
           ))}
-
-          <LinearGradient colors={["#5B8E55", "#0075E0"]} style={styles.weatherBox}>
-            <TouchableOpacity onPress={() => navigation.navigate("WeatherScreen")}>
-              <Text style={styles.weatherText}>{dataObj.weather.day}</Text>
-              <View style={styles.rowContainer}>
-                <View>
-                  <Text style={styles.weatherTemp}>{dataObj.weather.degree}</Text>
-                  <Text style={styles.weatherMini}>{dataObj.weather.degreemini}</Text>
-                </View>
-                <Ionicons name="sunny" size={40} color="#fff" />
-              </View>
-              <View style={styles.locationRow}>
-                <Ionicons name="location-outline" size={15} color="#fff" />
-                <Text style={styles.weatherLocation}>USA, New York</Text>
-              </View>
-            </TouchableOpacity>
-          </LinearGradient>
         </View>
 
+            {/**/}
         <FlatList
           data={banners}
           keyExtractor={(item) => item.id.toString()}
@@ -130,7 +114,7 @@ export default function HomeScreen() {
             </View>
           )}
         />
-
+            {/**/}
         <View style={styles.dotsContainer}>
           {banners.map((_, index) => (
             <View
@@ -163,6 +147,7 @@ export default function HomeScreen() {
         />
       </ScrollView>
 
+      {/**/}
       <View style={styles.bottomNav}>
         <TouchableOpacity onPress={() => navigation.navigate("HomeScreen")}>
           <Ionicons name="home" size={34} color="#5B8E55" />
@@ -237,49 +222,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "500",
   },
-  weatherBox: {
-    width: 110,
-    height: 110,
-    borderRadius: 20,
-    justifyContent: "space-evenly",
-    alignItems: "center",
-    padding: 4,
-  },
-  weatherText: {
-    color: "#fff",
-    fontSize: 15,
-    fontWeight: "bold",
-    alignSelf: "flex-start",
-    marginLeft: 5,
-  },
-  weatherTemp: {
-    color: "#fff",
-    fontSize: 39,
-    fontWeight: "bold",
-  },
-  weatherMini: {
-    color: "#fff",
-    fontSize: 13,
-    fontWeight: "bold",
-  },
-  weatherLocation: {
-    color: "#fff",
-    fontSize: 10,
-    marginLeft: 4,
-    fontWeight: "bold",
-    right: 3,
-  },
-  locationRow: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginTop: 4,
-  },
-  rowContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    width: "100%",
-    paddingHorizontal: 5,
-  },
   bannerItem: {
     width: width * 0.8,
     marginRight: 20,
@@ -337,24 +279,6 @@ const styles = StyleSheet.create({
     marginTop: 5,
     textAlign: "center",
   },
-  bottomNav: {
-    height: 50,
-    flexDirection: "row",
-    justifyContent: "space-around",
-    backgroundColor: "#fff",
-    paddingVertical: 10,
-    marginTop: 5,
-  },
-  centerIcon: {
-    backgroundColor: "#5B8E55",
-    padding: 15,
-    borderRadius: 50,
-    marginTop: -70,
-    width: 70,
-    height: 70,
-    justifyContent: "center",
-    alignItems: "center",
-  },
   newBadge: {
     position: "absolute",
     top: 10,
@@ -368,5 +292,30 @@ const styles = StyleSheet.create({
   newBadgeText: {
     color: "white",
     fontSize: 14,
+  },
+  bottomNav: {
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    right: 0,
+    height: 70,
+    flexDirection: "row",
+    justifyContent: "space-around",
+    alignItems: "center",
+    backgroundColor: "#fff",
+    borderTopWidth: 1,
+    borderTopColor: "#ccc",
+    paddingVertical: 10,
+    zIndex: 10,
+  },
+  centerIcon: {
+    backgroundColor: "#5B8E55",
+    padding: 15,
+    borderRadius: 50,
+    marginTop: -35,
+    width: 70,
+    height: 70,
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
