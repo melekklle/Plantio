@@ -8,13 +8,14 @@ const profileImage = require('../assets/profile.jpg');
 
 const ProfileScreen = () => {
   const navigation = useNavigation();
-  const [name, setName] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);
 
   const handleSave = async () => {
-    if (!name || !phone || !email) {
+    if (!firstName || !lastName || !phone || !email ) {
       Alert.alert('Hata', 'Lütfen tüm alanları doldurun.');
       return;
     }
@@ -22,12 +23,12 @@ const ProfileScreen = () => {
     setLoading(true);
 
     try {
-      const response = await fetch('http://192.168.151.9:5000/api/profile', {
+      const response = await fetch('http://192.168.151.9:3001/api/users', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, telephone: phone, email }),
+        body: JSON.stringify({ firstName,lastName, phone, email }),
       });
-
+      
       if (!response.ok) {
         const text = await response.text();
         console.log('HTTP Hata:', response.status, text);
@@ -40,7 +41,7 @@ const ProfileScreen = () => {
       console.log('API Cevap:', result);
 
       if (result.success) {
-        await AsyncStorage.setItem('userProfile', JSON.stringify({ name, phone, email }));
+        await AsyncStorage.setItem('userProfile', JSON.stringify({ firstName,lastName, phone, email }));
         Alert.alert('Başarılı', 'Bilgiler başarıyla kaydedildi!');
       } else {
         Alert.alert('Hata', result.message || 'Kayıt başarısız.');
@@ -58,8 +59,9 @@ const ProfileScreen = () => {
       try {
         const saved = await AsyncStorage.getItem('userProfile');
         if (saved) {
-          const { name, phone, email } = JSON.parse(saved);
-          setName(name);
+          const { firstName,lastName, phone, email } = JSON.parse(saved);
+          setFirstName(firstName);
+          setLastName(lastName);
           setPhone(phone);
           setEmail(email);
         }
@@ -87,12 +89,21 @@ const ProfileScreen = () => {
               <Image source={profileImage} style={styles.profileImage} />
             </View>
 
-            <Text style={styles.label}>İsim Soyisim</Text>
+            <Text style={styles.label}>İsim</Text>
             <TextInput
               style={styles.input}
-              placeholder="Adınızı ve Soyadınızı girin"
-              value={name}
-              onChangeText={setName}
+              placeholder="Adınızı girin"
+              value={firstName}
+              onChangeText={setFirstName}
+              editable={!loading}
+            />
+
+            <Text style={styles.label}>Soyadı</Text>
+            <TextInput
+              style={styles.input}
+              placeholder="Soyadınızı girin"
+              value={lastName}
+              onChangeText={setLastName}
               editable={!loading}
             />
 

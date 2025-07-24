@@ -10,13 +10,13 @@ export default function PeopleScreen({ navigation }) {
   const fetchUsers = async () => {
     try {
       setLoading(true);
-      const response = await fetch('http://192.168.151.9:5000/api/profile', {
+      const response = await fetch('http://192.168.151.9:3001/api/users', {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
       });
       if (!response.ok) throw new Error('Sunucudan veri alınamadı');
       const data = await response.json();
-      setUsers(data);
+      setUsers(data.data);
     } catch (error) {
       console.error('Kullanıcılar alınamadı:', error);
       Alert.alert('Hata', 'Kullanıcılar yüklenemedi.');
@@ -30,7 +30,7 @@ export default function PeopleScreen({ navigation }) {
   }, []);
 
   const filteredUsers = users.filter((user) =>
-    user.name?.toLowerCase().includes(searchQuery.toLowerCase())
+    user.firstName?.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   return (
@@ -76,9 +76,10 @@ export default function PeopleScreen({ navigation }) {
                   resizeMode="cover"
                 />
                 <View style={{ flex: 1, paddingHorizontal: 10 }}>
-                  <Text style={styles.itemTitle}>{item.name}</Text>
+                  <Text style={styles.itemTitle}>{item.firstName}</Text>
+                  <Text style={styles.itemTitle}>{item.lastName}</Text>
                   <Text style={styles.price}>{item.email}</Text>
-                   <Text style={styles.price}>{item.telephone}</Text>
+                   <Text style={styles.price}>{item.phone}</Text>
                     <Text style={styles.price}>{item.tc}</Text>
                 </View>
               </View>
