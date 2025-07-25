@@ -13,7 +13,7 @@ export default function HomeScreen() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [loading, setLoading] = useState(false);
 
-  const API_URL = "http://192.168.151.9:3000/api/profile";
+  const API_URL = "http://192.168.151.9:3001/api/users";
 
   useEffect(() => {
     const fetchData = async () => {
